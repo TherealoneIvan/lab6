@@ -11,8 +11,8 @@ public class Zoo {
     zoo.create("/servers/s",
         data.getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
-    CreateMode.EPHEMERAL_SEQUENTIAL
-);
+    CreateMode.EPHEMERAL_SEQUENTIAL);
+    
     List<String> servers = zoo.getChildren("/servers", this);
 for (String s : servers) {
         byte[] data = zoo.getData("/servers/" + s, false, null);
