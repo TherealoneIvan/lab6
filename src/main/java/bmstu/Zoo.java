@@ -18,7 +18,7 @@ public class Zoo {
         serverInit();
         WatcherEvent e = new WatcherEvent(Watcher.Event.EventType.NodeCreated,
                 Watcher.Event.KeeperState.SyncConnected, "");
-        
+        watcher.process(e);
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
