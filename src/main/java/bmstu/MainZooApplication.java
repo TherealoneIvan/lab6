@@ -53,7 +53,7 @@ public class MainZooApplication  extends AllDirectives {
         return  http.singleRequest(HttpRequest.create(String.format(
                 "http://%s:%s?url=%s&count=%d",
                 host , sUrl , url,Integer.parseInt(count) - 1)
-        )));
+        ));
     }
     private Route createRoute(){
         return get(()->
@@ -65,7 +65,7 @@ public class MainZooApplication  extends AllDirectives {
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
                                                 .thenApply(sUrl -> (String)sUrl)
-                                                .thenCompose()
+                                                .thenCompose(fetch())
                                 )
                         })
 
