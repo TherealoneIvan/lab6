@@ -8,7 +8,7 @@ import java.util.List;
 public class Zoo {
     String a = "asd";
     ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
-    zoo.
+    
 
     private Watcher watcher () throws KeeperException, InterruptedException {
         List<String> servers = zoo.getChildren("/servers", null);
