@@ -1,8 +1,12 @@
 package bmstu;
 
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooKeeper;
+
 public class Zoo {
-    ZooK)eeper zoo = new ZooK)eeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
-zoo.create("/servers/s",
+    ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
+    zoo.create("/servers/s",
         “data”.getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL
