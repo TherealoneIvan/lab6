@@ -28,6 +28,7 @@ public class MainZooApplication  extends AllDirectives {
     public static final String HTTP_CREATE_STRING = "http://%s:%s?url=%s&count=%d";
     public static Http http;
     public static ActorRef storeActor;
+    
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create(ROUTES);

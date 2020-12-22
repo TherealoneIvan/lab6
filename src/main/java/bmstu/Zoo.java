@@ -14,20 +14,18 @@ public class Zoo {
     public static final String SERVERS_NODE_STRING = "/servers/s";
     private ActorRef storeActor;
     private static ZooKeeper zoo;
-    public static int PORT;
-    public Zoo(ActorRef storeActor) throws IOException, KeeperException, InterruptedException {
+    public Zoo(ActorRef storeActor , String port) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
-        PORT = Integer.parseInt(argv[0]);
         this.zoo = new ZooKeeper("localhost", 3000, null);
-        serverInit();
+        serverInit(port);
         WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
                 Watcher.Event.KeeperState.SyncConnected, "");
         watcher.process(e);
     }
 
-    private static void serverInit() throws KeeperException, InterruptedException {
+    private static void serverInit(String port) throws KeeperException, InterruptedException {
         zoo.create(SERVERS_NODE_STRING,
-                "data".getBytes(),
+                port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
 
