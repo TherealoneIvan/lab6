@@ -39,7 +39,7 @@ public class Zoo {
                 e.printStackTrace();
             }
         };
-    }
+    };
 
     public Zoo() throws IOException {
     }
