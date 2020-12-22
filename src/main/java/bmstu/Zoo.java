@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Zoo {
     public static final String SERVERS_ROOT_STRING = "/servers/";
+    public static final String SERVERS = "/servers";
+    public static final String SERVERS_NODE_STRING = "/servers/s";
     private ActorRef storeActor;
     private static ZooKeeper zoo;
 
@@ -23,7 +25,7 @@ public class Zoo {
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
-        zoo.create("/servers/s",
+        zoo.create(SERVERS_NODE_STRING,
                 "data".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
@@ -34,7 +36,7 @@ public class Zoo {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
             ArrayList<String> servers = new ArrayList<>();
             try {
-                List<String> serversList = zoo.getChildren("/servers", null);
+                List<String> serversList = zoo.getChildren(SERVERS, null);
                 for (String s : servers) {
                     byte[] data = zoo.getData(SERVERS_ROOT_STRING + s, false, null);
                     servers.add(new String(data));
