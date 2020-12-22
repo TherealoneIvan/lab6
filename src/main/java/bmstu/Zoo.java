@@ -7,9 +7,12 @@ import java.util.List;
 
 public class Zoo {
     String a = "asd";
-    ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
-    private static void serverInit(){
-        
+    static ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
+    private static void serverInit() throws KeeperException, InterruptedException {
+        zoo.create("/servers/s",
+                "data".getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE ,
+                CreateMode.EPHEMERAL_SEQUENTIAL);
     }
 
     private Watcher watcher () throws KeeperException, InterruptedException {
