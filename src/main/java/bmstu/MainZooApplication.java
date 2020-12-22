@@ -1,2 +1,4 @@
-package bmstu;public class MainZooApplication {
+package bmstu;
+
+public class MainZooApplication {
 }
