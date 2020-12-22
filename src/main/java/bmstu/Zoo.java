@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-    ActorRef storeActor;
-    ZooKeeper zoo;
+    private ActorRef storeActor;
+    private ZooKeeper zoo;
 
     public Zoo(ActorRef storeActor) throws IOException {
         this.storeActor = storeActor;
