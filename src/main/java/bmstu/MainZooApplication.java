@@ -27,6 +27,7 @@ public static final int TIMEOUT_MILLIS = 5000;
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
+        
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = create;
