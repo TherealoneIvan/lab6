@@ -1,17 +1,19 @@
 package bmstu;
 
-public class ServerChangerdMsg {
-    private String[] servers;
+import java.util.ArrayList;
 
-    public ServerChangerdMsg(String[] servers) {
+public class ServerChangerdMsg {
+    private ArrayList<String> servers;
+
+    public ServerChangerdMsg(ArrayList<String> servers) {
         this.servers = servers;
     }
 
-    public String[] getServers() {
+    public ArrayList<String> getServers() {
         return servers;
     }
 
-    public void setServers(String[] servers) {
+    public void setServers(ArrayList<String> servers) {
         this.servers = servers;
     }
 }
