@@ -21,7 +21,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class MainZooApplication  extends AllDirectives {
-    public static final Duration TIMEOUT_MILLIS = ;
+    public static final Duration TIMEOUT_MILLIS =  Duration.ofMillis(5000);
     public static final int PORT = 8080;
     public static Http http;
     public static ActorRef storeActor;
