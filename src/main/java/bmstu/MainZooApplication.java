@@ -49,7 +49,7 @@ public class MainZooApplication  extends AllDirectives {
                         parameter("count" , count ->{
                             int countNew = Integer.parseInt(count);
                             if (countNew == 0)
-                                
+                                return 
                         })
 
                 )
