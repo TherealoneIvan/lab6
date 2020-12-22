@@ -17,7 +17,7 @@ public class Zoo {
 
     public Zoo(ActorRef storeActor) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
-        
+
         this.zoo = new ZooKeeper("localhost", 3000, null);
         serverInit();
         WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
