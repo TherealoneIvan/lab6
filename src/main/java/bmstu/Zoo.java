@@ -16,7 +16,7 @@ public class Zoo {
         this.storeActor = storeActor;
         this.zoo = new ZooKeeper("localhost", 3000, null);
         serverInit();
-        WatcherEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
+        WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
                 Watcher.Event.KeeperState.SyncConnected, "");
         watcher.process(e);
     }
