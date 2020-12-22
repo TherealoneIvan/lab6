@@ -45,7 +45,9 @@ public class MainZooApplication  extends AllDirectives {
     private Route createRoute(){
         return get(()->
                 parameter("url", url->
-                        parameter("count" , )
+                        parameter("count" , count ->{
+                            
+                        })
 
                 )
 
