@@ -1,5 +1,7 @@
 package bmstu;
 
-public class StoreConfActor extends AbstractActor{
+import akka.actor.AbstractActor;
+
+public class StoreConfActor extends AbstractActor {
     
 }
