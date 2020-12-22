@@ -39,7 +39,7 @@ public class Zoo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+        storeActor.tell();
         }
     };
 
