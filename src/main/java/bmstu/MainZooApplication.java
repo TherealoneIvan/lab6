@@ -47,7 +47,8 @@ public class MainZooApplication  extends AllDirectives {
         return get(()->
                 parameter("url", url->
                         parameter("count" , count ->{
-                            int countNew = Integer.parseInt(count)
+                            int countNew = Integer.parseInt(count);
+                            if ()
                         })
 
                 )
