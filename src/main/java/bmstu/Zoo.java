@@ -14,7 +14,7 @@ public class Zoo {
     public static final String SERVERS_NODE_STRING = "/servers/s";
     private ActorRef storeActor;
     private static ZooKeeper zoo;
-
+    public static int PORT;
     public Zoo(ActorRef storeActor) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
 
