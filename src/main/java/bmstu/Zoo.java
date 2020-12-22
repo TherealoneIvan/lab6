@@ -23,11 +23,13 @@ public class Zoo {
                 CreateMode.EPHEMERAL_SEQUENTIAL);
     }
 
-    private Watcher watcher () throws KeeperException, InterruptedException {
-        List<String> servers = zoo.getChildren("/servers", null);
-        for (String s : servers) {
-            byte[] data = zoo.getData("/servers/" + s, false, null);
-            System.out.println("server " + s + " data=" + new String(data));
+    private Watcher watcher = watchedEvent -> {
+        if (watchedEvent.getType() ==  Watcher.Event.EventType.NodeChildrenChanged) {
+            List<String> servers = zoo.getChildren("/servers", null);
+            for (String s : servers) {
+                byte[] data = zoo.getData("/servers/" + s, false, null);
+                System.out.println("server " + s + " data=" + new String(data));
+            }
         }
     }
 
