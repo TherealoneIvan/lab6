@@ -13,7 +13,7 @@ public class Zoo {
 
     public Zoo(ActorRef storeActor) throws IOException {
         this.storeActor = storeActor;
-        ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
+        this.zoo = new ZooKeeper("localhost", 3000, null);
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
