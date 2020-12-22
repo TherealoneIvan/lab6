@@ -10,7 +10,7 @@ public class StoreConfActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetServerMsg.class , msg ->{
-                    
+
                 })
                 .match(ServerChangerdMsg.class , msg ->{
                     this.servers = msg.getServers();
