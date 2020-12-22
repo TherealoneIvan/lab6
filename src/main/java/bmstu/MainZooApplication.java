@@ -25,6 +25,7 @@ public class MainZooApplication  extends AllDirectives {
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
+        final http = 
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
         final MainZooApplication app = new MainZooApplication();
@@ -45,9 +46,7 @@ public class MainZooApplication  extends AllDirectives {
     private Route createRoute(){
         return get(()->
                 parameter("url", url->
-                        parameter("count" , count ->{
-                            
-                        })
+                        parameter("count" , count ->{})
 
                 )
 
