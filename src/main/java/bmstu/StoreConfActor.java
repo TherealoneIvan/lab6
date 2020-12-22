@@ -13,7 +13,7 @@ public class StoreConfActor extends AbstractActor {
 
                 })
                 .match(ServerChangerdMsg.class , msg ->{
-                    
+                    this.servers = msg;
                 })
     }
 }
