@@ -22,8 +22,10 @@ import java.util.concurrent.CompletionStage;
 
 public class MainZooApplication  extends AllDirectives {
     public static final Duration TIMEOUT_MILLIS =  Duration.ofMillis(5000);
-    public static final int PORT = 8080;
     public static final String ROUTES = "routes";
+    public static final String LOCALHOST = "localhost";
+    public static final int PORT1 = 8080;
+    public static final String HTTP_CREATE_STRING = "http://%s:%s?url=%s&count=%d";
     public static Http http;
     public static ActorRef storeActor;
     public static void main(String[] args) throws IOException {
@@ -38,7 +40,7 @@ public class MainZooApplication  extends AllDirectives {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost(LOCALHOST, PORT1),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
@@ -52,7 +54,7 @@ public class MainZooApplication  extends AllDirectives {
     }
     private static CompletionStage<HttpResponse> fetch (String url , String host, String sUrl , String count){
         return  http.singleRequest(HttpRequest.create(String.format(
-                "http://%s:%s?url=%s&count=%d",
+                HTTP_CREATE_STRING,
                 host , sUrl , url,Integer.parseInt(count) - 1)
         ));
     }
@@ -66,7 +68,7 @@ public class MainZooApplication  extends AllDirectives {
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
                                                 .thenApply(sUrl -> (String)sUrl)
-                                                .thenCompose(sUrl -> fetch("localhost",sUrl , url , count))
+                                                .thenCompose(sUrl -> fetch(LOCALHOST,sUrl , url , count))
                                 );
                         })
                 )
