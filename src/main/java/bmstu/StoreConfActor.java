@@ -11,7 +11,7 @@ public class StoreConfActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetServerMsg.class , msg ->{
-                    sender().tell(getRandomServer()
+                    sender().tell(getRandomServer(),self());
                 })
                 .match(ServerChangerdMsg.class , msg ->{
                     this.servers = msg.getServers();
