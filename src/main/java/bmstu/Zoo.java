@@ -26,7 +26,7 @@ public class Zoo {
 
     private Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() ==  Watcher.Event.EventType.NodeChildrenChanged) {
-            ArrayList<String> servers = new ArrayList<String>();
+            ArrayList<String> servers = new ArrayList<>();
             
             List<String> servers = zoo.getChildren("/servers", null);
             for (String s : servers) {
