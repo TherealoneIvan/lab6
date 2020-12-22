@@ -23,6 +23,7 @@ public class MainZooApplication  extends AllDirectives {
     public static final int TIMEOUT_MILLIS = 5000;
     public static final int PORT = 8080;
     public static Http http;
+    public static ActorRef storeActor;
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
@@ -55,7 +56,7 @@ public class MainZooApplication  extends AllDirectives {
                             if (countNew == 0)
                                 return completeWithFuture(singleReq(url));
                             else
-                                return completeWithFuture(Patterns.ask(storeActor))
+                                return completeWithFuture(Patterns.ask(storeActor , ))
                         })
 
                 )
