@@ -1,2 +1,5 @@
-package bmstu;public class ServerChangerdMsh {
+package bmstu;
+
+public class ServerChangerdMsg {
+    
 }
