@@ -31,7 +31,7 @@ public class Zoo {
 
     }
 
-    private Watcher watcher = watchedEvent -> {
+    public Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
             ArrayList<String> servers = new ArrayList<>();
             try {
