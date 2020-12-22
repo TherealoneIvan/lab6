@@ -11,10 +11,10 @@ public class Zoo {
     private ActorRef storeActor;
     private static ZooKeeper zoo;
 
-    public Zoo(ActorRef storeActor) throws IOException {
+    public Zoo(ActorRef storeActor) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
         this.zoo = new ZooKeeper("localhost", 3000, null);
-        
+        serverInit();
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
