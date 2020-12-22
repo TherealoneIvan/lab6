@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
+    public static final String SERVERS_ROOT_STRING = "/servers/";
     private ActorRef storeActor;
     private static ZooKeeper zoo;
 
@@ -35,7 +36,7 @@ public class Zoo {
             try {
                 List<String> serversList = zoo.getChildren("/servers", null);
                 for (String s : servers) {
-                    byte[] data = zoo.getData("/servers/" + s, false, null);
+                    byte[] data = zoo.getData(SERVERS_ROOT_STRING + s, false, null);
                     servers.add(new String(data));
                 }
             } catch (KeeperException e) {
