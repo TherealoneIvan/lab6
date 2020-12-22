@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class MainZooApplication  extends AllDirectives {
-    //    моя лаба 4 оттуда код
     public static final int TIMEOUT_MILLIS = 5000;
     public static final int PORT = 8080;
 

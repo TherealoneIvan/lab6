@@ -1,5 +1,6 @@
 package bmstu;
 
+import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
@@ -7,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-    String a = "asd";
+    ActorRef = storeActor
     static ZooKeeper zoo;
     static {
         try {
-            zoo = new ZooKeeper("localhost", 3000, watcher);
+            zoo = new ZooKeeper("localhost", 3000, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,7 +39,8 @@ public class Zoo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        };
+
+        }
     };
 
     public Zoo() throws IOException {
