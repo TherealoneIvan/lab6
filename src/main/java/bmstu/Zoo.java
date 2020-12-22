@@ -17,7 +17,7 @@ public class Zoo {
     public static int PORT;
     public Zoo(ActorRef storeActor) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
-
+        PORT = Integer.parseInt(argv[0]);
         this.zoo = new ZooKeeper("localhost", 3000, null);
         serverInit();
         WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
