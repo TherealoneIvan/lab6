@@ -25,19 +25,19 @@ public class Zoo {
     }
 
     private Watcher watcher = watchedEvent -> {
-        if (watchedEvent.getType() ==  Watcher.Event.EventType.NodeChildrenChanged) {
+        if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
             ArrayList<String> servers = new ArrayList<>();
             try {
-                servers = zoo.getChildren("/servers", null);
+                List<String> serversList = zoo.getChildren("/servers", null);
+                for (String s : servers) {
+                    byte[] data = zoo.getData("/servers/" + s, false, null);
+                }
             } catch (KeeperException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for (String s : servers) {
-                byte[] data = zoo.getData("/servers/" + s, false, null);
 
-            }
         }
     }
 
