@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Zoo {
     private ActorRef storeActor;
-    private ZooKeeper zoo;
+    private static ZooKeeper zoo;
 
     public Zoo(ActorRef storeActor) throws IOException {
         this.storeActor = storeActor;
@@ -21,7 +21,7 @@ public class Zoo {
                 "data".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
-
+        
     }
 
     public Watcher watcher = watchedEvent -> {
