@@ -27,8 +27,13 @@ public class Zoo {
     private Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() ==  Watcher.Event.EventType.NodeChildrenChanged) {
             ArrayList<String> servers = new ArrayList<>();
-            
-            List<String> servers = zoo.getChildren("/servers", null);
+            try {
+                servers = zoo.getChildren("/servers", null);
+            } catch (KeeperException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             for (String s : servers) {
                 byte[] data = zoo.getData("/servers/" + s, false, null);
 
