@@ -2,14 +2,18 @@ package bmstu;
 
 import akka.actor.AbstractActor;
 
+import java.util.ArrayList;
+
 public class StoreConfActor extends AbstractActor {
-    private String[] servers;
+    private ArrayList<String> servers;
     @Override
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetServerMsg.class , msg ->{
 
                 })
-                .match()
+                .match(ServerChangerdMsg.class , msg ->{
+                    
+                })
     }
 }
