@@ -1,4 +1,4 @@
 package bmstu;
 
-public class MainZooApplication {
+public class MainZooApplication  extends  A{
 }
