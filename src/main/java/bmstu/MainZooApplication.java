@@ -25,7 +25,7 @@ public class MainZooApplication  extends AllDirectives {
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
-        final static Http http = Http.get(system);
+        Http http = Http.get(system);
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
         final MainZooApplication app = new MainZooApplication();
@@ -43,7 +43,7 @@ public class MainZooApplication  extends AllDirectives {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
     }
-    private CompletionStage<HttpRequest> singleReq (String url){
+    private static CompletionStage<HttpRequest> singleReq (String url){
         return 
     }
     private Route createRoute(){
