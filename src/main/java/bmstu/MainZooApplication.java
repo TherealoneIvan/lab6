@@ -50,7 +50,9 @@ public class MainZooApplication  extends AllDirectives {
         return http.singleRequest(HttpRequest.create(url));
     }
     private static CompletionStage<HttpResponse> fetch (String url , String host, String sUrl , String count){
-        return  http.singleRequest(HttpRequest.create(String.format()));
+        return  http.singleRequest(HttpRequest.create(String.format(
+                ""
+        )));
     }
     private Route createRoute(){
         return get(()->
