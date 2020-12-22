@@ -1,2 +1,4 @@
-package bmstu;public class StoreConfActor {
+package bmstu;
+
+public class StoreConfActor {
 }
