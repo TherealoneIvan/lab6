@@ -15,6 +15,7 @@ public class Zoo {
         byte[] data = zoo.getData("/servers/" + s, false, null);
         System.out.println("server " + s + " data=" + new String(data));
     }
+    private Watcher watcher 
 
     public Zoo() throws IOException {
     }
