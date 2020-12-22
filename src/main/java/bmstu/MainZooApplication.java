@@ -1,8 +1,21 @@
 package bmstu;
 
+import akka.NotUsed;
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.http.javadsl.ConnectHttp;
+import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
+import akka.stream.ActorMaterializer;
+import akka.stream.Materializer;
+import akka.stream.javadsl.Flow;
 
 public class MainZooApplication  extends AllDirectives {
+//    моя лаба 4 оттуда код
     final ActorSystem system = ActorSystem.create("test");
     ActorRef router = system.actorOf(Props.create(ActorRouter.class));
     final Http http = Http.get(system);
@@ -20,5 +33,5 @@ public class MainZooApplication  extends AllDirectives {
         binding
                 .thenCompose(ServerBinding::unbind)
             .thenAccept(unbound -> system.terminate());
-}
+
 }
