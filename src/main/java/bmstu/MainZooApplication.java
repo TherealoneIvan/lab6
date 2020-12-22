@@ -65,7 +65,7 @@ public class MainZooApplication  extends AllDirectives {
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
                                                 .thenApply(sUrl -> (String)sUrl)
-                                                .thenCompose(fetch("localhost",sUrl , url))
+                                                .thenCompose(sUrl -> fetch("localhost",sUrl , url))
                                 )
                         })
 
