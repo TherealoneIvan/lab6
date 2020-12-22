@@ -11,7 +11,7 @@ public class Zoo {
     static ZooKeeper zoo;
     static {
         try {
-            zoo = new ZooKeeper("localhost", 3000, null);
+            zoo = new ZooKeeper("localhost", 3000, watcher);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,8 +38,7 @@ public class Zoo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-        }
+        };
     }
 
     public Zoo() throws IOException {
