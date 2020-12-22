@@ -6,6 +6,7 @@ public class StoreConfActor extends AbstractActor {
     private String[] servers;
     @Override
     public Receive createReceive() {
-        
+        return receiveBuilder()
+                .match(String[])
     }
 }
