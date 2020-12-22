@@ -9,11 +9,10 @@ public class Zoo {
     zoo.create("/servers/s",
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL);
-    Watcher watcher = new Watcher() {
-        @Override
-        public void process(WatchedEvent watchedEvent) {
-
-        }
+    List<String> servers = zoo.getChildren("/servers", this);
+    for (String s : servers) {
+        byte[] data = zoo.getData("/servers/" + s, false, null);
+        System.out.println("server " + s + " data=" + new String(data));
     }
 
 }
