@@ -25,7 +25,7 @@ public class MainZooApplication  extends AllDirectives {
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
-        final http = 
+        final Http http =  
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
         final MainZooApplication app = new MainZooApplication();
