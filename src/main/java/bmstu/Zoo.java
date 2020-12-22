@@ -1,2 +1,5 @@
-package bmstu;public class Zoo {
+package bmstu;
+
+public class Zoo {
+    
 }
