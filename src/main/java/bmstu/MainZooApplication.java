@@ -23,11 +23,12 @@ import java.util.concurrent.CompletionStage;
 public class MainZooApplication  extends AllDirectives {
     public static final Duration TIMEOUT_MILLIS =  Duration.ofMillis(5000);
     public static final int PORT = 8080;
+    public static final String ROUTES = "routes";
     public static Http http;
     public static ActorRef storeActor;
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
-        ActorSystem system = ActorSystem.create("routes");
+        ActorSystem system = ActorSystem.create(ROUTES);
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
         Zoo zoo = new Zoo();
