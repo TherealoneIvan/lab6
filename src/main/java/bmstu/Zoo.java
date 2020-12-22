@@ -18,9 +18,9 @@ public class Zoo {
         }
     }
 
-    public Zoo(ActorRef storeActor, Watcher watcher) {
+    public Zoo(ActorRef storeActor) {
         this.storeActor = storeActor;
-        this.watcher = watcher;
+        
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
