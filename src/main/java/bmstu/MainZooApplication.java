@@ -50,7 +50,7 @@ public class MainZooApplication  extends AllDirectives {
         return http.singleRequest(HttpRequest.create(url));
     }
     private static CompletionStage<HttpResponse> fetch (String url){
-        return http.singleRequest(HttpRequest.create());
+        return  http.singleRequest(HttpRequest.create());
     }
     private Route createRoute(){
         return get(()->
@@ -61,7 +61,7 @@ public class MainZooApplication  extends AllDirectives {
                                 return completeWithFuture(singleReq(url));
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
-                                                .thenApply(sUrl -> fetch(String.format()))
+                                                .thenApply(sUrl -> )
                                 )
                         })
 
