@@ -12,10 +12,15 @@ public class Zoo {
     static ZooKeeper zoo;
     static {
         try {
-            zoo = new ZooKeeper("localhost", 3000, null);
+            zoo = new ZooKeeper("localhost", 3000, );
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Zoo(ActorRef storeActor, Watcher watcher) {
+        this.storeActor = storeActor;
+        this.watcher = watcher;
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
