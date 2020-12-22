@@ -3,6 +3,7 @@ package bmstu;
 import akka.actor.AbstractActor;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class StoreConfActor extends AbstractActor {
     private ArrayList<String> servers;
@@ -10,7 +11,7 @@ public class StoreConfActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetServerMsg.class , msg ->{
-
+                    return getRandomServer();
                 })
                 .match(ServerChangerdMsg.class , msg ->{
                     this.servers = msg.getServers();
@@ -18,6 +19,6 @@ public class StoreConfActor extends AbstractActor {
                 .build();
     }
     private String getRandomServer() {
-        return 
+        return servers.get(new Random().nextInt(servers.size()));
     }
 }
