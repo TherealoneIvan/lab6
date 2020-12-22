@@ -44,6 +44,7 @@ public class MainZooApplication  extends AllDirectives {
     }
     private Route createRoute(){
         return get(()->
+                parameter()
 
         )
     }
