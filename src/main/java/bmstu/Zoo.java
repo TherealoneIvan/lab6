@@ -9,7 +9,7 @@ public class Zoo {
     String a = "asd";
     ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
     zoo.create("/servers/s",
-    a.getB
+    a.getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL);
 
