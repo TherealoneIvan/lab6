@@ -21,7 +21,7 @@ public class Zoo {
                 "data".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
-        
+
     }
 
     public Watcher watcher = watchedEvent -> {
