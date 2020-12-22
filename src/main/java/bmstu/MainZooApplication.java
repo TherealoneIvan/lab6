@@ -15,6 +15,7 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
+import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -29,12 +30,13 @@ public class MainZooApplication  extends AllDirectives {
     public static Http http;
     public static ActorRef storeActor;
     public static int PORT;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create(ROUTES);
+        PORT = 
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
-        Zoo zoo = new Zoo(storeActor , );
+        Zoo zoo = new Zoo(storeActor , PORT);
         final MainZooApplication app = new MainZooApplication();
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
