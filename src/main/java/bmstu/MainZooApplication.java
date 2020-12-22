@@ -44,7 +44,7 @@ public class MainZooApplication  extends AllDirectives {
                 .thenAccept(unbound -> system.terminate());
     }
     private static CompletionStage<HttpResponse> singleReq (String url){
-        return 
+        return http.singleRequest()
     }
     private Route createRoute(){
         return get(()->
