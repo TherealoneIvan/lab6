@@ -34,7 +34,7 @@ public class MainZooApplication  extends AllDirectives {
         final MainZooApplication app = new MainZooApplication();
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute();
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createRoute();
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -55,7 +55,7 @@ public class MainZooApplication  extends AllDirectives {
                 host , sUrl , url,Integer.parseInt(count) - 1)
         ));
     }
-    private Route createRoute(){
+    private static Route createRoute(){
         return get(()->
                 parameter("url", url->
                         parameter("count" , count ->{
@@ -65,7 +65,7 @@ public class MainZooApplication  extends AllDirectives {
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
                                                 .thenApply(sUrl -> (String)sUrl)
-                                                .thenCompose(sUrl -> fetch("localhost",sUrl , url , ))
+                                                .thenCompose(sUrl -> fetch("localhost",sUrl , url , count))
                                 )
                         })
 
