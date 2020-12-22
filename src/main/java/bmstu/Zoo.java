@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Zoo {
     ZooKeeper zoo = new ZooKeeper("localhost", 3000, this);
-    zoo.create("/servers/s",
+    zoo.create("/servers/",
         data.getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL);
     Watcher watcher = new Watcher() {
         @Override
         public void process(WatchedEvent watchedEvent) {
-            
+
         }
     }
 
