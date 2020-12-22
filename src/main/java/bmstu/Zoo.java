@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class Zoo {
-    ZooKeeper zoo = new ZooKeeper("localhost", 3000, this);
+    ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
     zoo.create("/servers/s",
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL);
 
-    private Watcher watcher () {
-        List<String> servers = zoo.getChildren("/servers", this);
+    private Watcher watcher () throws KeeperException, InterruptedException {
+        List<String> servers = zoo.getChildren("/servers", null);
         for (String s : servers) {
             byte[] data = zoo.getData("/servers/" + s, false, null);
             System.out.println("server " + s + " data=" + new String(data));
