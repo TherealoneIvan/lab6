@@ -49,7 +49,7 @@ public class MainZooApplication  extends AllDirectives {
     private static CompletionStage<HttpResponse> singleReq (String url){
         return http.singleRequest(HttpRequest.create(url));
     }
-    private static CompletionStage<HttpResponse> fetch (String url , ){
+    private static CompletionStage<HttpResponse> fetch (String url , String host, ){
         return  http.singleRequest(HttpRequest.create());
     }
     private Route createRoute(){
