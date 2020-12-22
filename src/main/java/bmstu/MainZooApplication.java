@@ -49,7 +49,7 @@ public class MainZooApplication  extends AllDirectives {
     private static CompletionStage<HttpResponse> singleReq (String url){
         return http.singleRequest(HttpRequest.create(url));
     }
-    private static CompletionStage<HttpResponse> fetch (String url){
+    private static CompletionStage<HttpResponse> fetch (String url , ){
         return  http.singleRequest(HttpRequest.create());
     }
     private Route createRoute(){
@@ -62,6 +62,7 @@ public class MainZooApplication  extends AllDirectives {
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
                                                 .thenApply(sUrl -> (String)sUrl)
+                                                .thenCompose()
                                 )
                         })
 
