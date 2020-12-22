@@ -12,7 +12,7 @@ public class Zoo {
     static ZooKeeper zoo;
     static {
         try {
-            zoo = new ZooKeeper("localhost", 3000, );
+            zoo = new ZooKeeper("localhost", 3000, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
