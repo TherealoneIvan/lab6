@@ -23,9 +23,9 @@ public static final int TIMEOUT_MILLIS = 5000;
 
     public static void main(String[] args) throws IOException {
         final ActorSystem system = ActorSystem.create("test");
-        ActorRef router = system.actorOf(Props.create(ActorRouter.class));
+        ActorRef router = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
-        
+
         final Materializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 app.createRoute(system, router).flow(system, materializer);
