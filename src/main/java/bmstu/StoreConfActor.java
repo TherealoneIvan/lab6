@@ -1,4 +1,5 @@
 package bmstu;
 
-public class StoreConfActor {
+public class StoreConfActor extends AbstractActor{
+    
 }
