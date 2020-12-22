@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-    ActorRef = storeActor
+    ActorRef storeActor;
     static ZooKeeper zoo;
     static {
         try {
