@@ -33,7 +33,7 @@ public class MainZooApplication  extends AllDirectives {
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create(ROUTES);
-        
+
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
         Zoo zoo = new Zoo(storeActor , PORT);
