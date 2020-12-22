@@ -1,9 +1,6 @@
 package bmstu;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.util.List;
 
@@ -13,6 +10,11 @@ public class Zoo {
         data.getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL);
-    Watcher watcher 
+    Watcher watcher = new Watcher() {
+        @Override
+        public void process(WatchedEvent watchedEvent) {
+            
+        }
+    }
 
 }
