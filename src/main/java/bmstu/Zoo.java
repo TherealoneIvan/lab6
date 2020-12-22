@@ -7,7 +7,15 @@ import java.util.List;
 
 public class Zoo {
     String a = "asd";
-    static ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
+    static ZooKeeper zoo;
+    static {
+        try {
+            zoo = new ZooKeeper("localhost", 3000, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void serverInit() throws KeeperException, InterruptedException {
         zoo.create("/servers/s",
                 "data".getBytes(),
