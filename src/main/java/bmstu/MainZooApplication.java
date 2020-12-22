@@ -55,7 +55,7 @@ public class MainZooApplication  extends AllDirectives {
                             if (countNew == 0)
                                 return completeWithFuture(singleReq(url));
                             else
-                                return completeWithFuture(Patterns.ask())
+                                return completeWithFuture(Patterns.ask(storeActor))
                         })
 
                 )
