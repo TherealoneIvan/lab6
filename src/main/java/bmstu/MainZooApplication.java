@@ -30,7 +30,7 @@ public static final int TIMEOUT_MILLIS = 5000;
         final MainZooApplication app = new MainZooApplication();
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.create;
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRo;
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
