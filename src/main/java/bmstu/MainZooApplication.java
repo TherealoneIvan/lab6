@@ -14,6 +14,7 @@ import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class MainZooApplication  extends AllDirectives {
@@ -22,16 +23,16 @@ public static final int TIMEOUT_MILLIS = 5000;
     public static final int PORT = 8080;
 
     public static void main(String[] args) throws IOException {
-        final ActorSystem system = ActorSystem.create("test");
-        ActorRef router = system.actorOf(Props.create(StoreConfActor.class));
+        System.out.println("start!");
+        ActorSystem system = ActorSystem.create("routes");
+        ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
-
-        final Materializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                app.createRoute(system, router).flow(system, materializer);
+        final ActorMaterializer materializer =
+                ActorMaterializer.create(system);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = Client.getCounter(materializer , storeActor);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", PORT),
+                ConnectHttp.toHost("localhost", 8080),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
@@ -40,4 +41,3 @@ public static final int TIMEOUT_MILLIS = 5000;
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
     }
-}
