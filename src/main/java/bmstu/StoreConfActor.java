@@ -8,7 +8,8 @@ public class StoreConfActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetServerMsg.class , msg ->{
-                     
+
                 })
+                .match()
     }
 }
