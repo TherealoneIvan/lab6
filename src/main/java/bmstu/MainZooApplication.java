@@ -21,7 +21,7 @@ import java.util.concurrent.CompletionStage;
 public class MainZooApplication  extends AllDirectives {
     public static final int TIMEOUT_MILLIS = 5000;
     public static final int PORT = 8080;
-    final static 
+    final static Http http;
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
