@@ -34,7 +34,7 @@ public class MainZooApplication  extends AllDirectives {
         ActorSystem system = ActorSystem.create(ROUTES);
         ActorRef storeActor = system.actorOf(Props.create(StoreConfActor.class));
         final Http http = Http.get(system);
-        Zoo zoo = new Zoo();
+        Zoo zoo = new Zoo(storeActor , );
         final MainZooApplication app = new MainZooApplication();
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
