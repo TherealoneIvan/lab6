@@ -43,7 +43,9 @@ public class MainZooApplication  extends AllDirectives {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
     }
-    private CompletionStage<HttpRequest> singleReq ()
+    private CompletionStage<HttpRequest> singleReq (String url){
+        
+    }
     private Route createRoute(){
         return get(()->
                 parameter("url", url->
