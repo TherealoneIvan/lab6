@@ -31,7 +31,7 @@ public class Zoo {
                 List<String> serversList = zoo.getChildren("/servers", null);
                 for (String s : servers) {
                     byte[] data = zoo.getData("/servers/" + s, false, null);
-                    
+                    servers.add(new String(data));
                 }
             } catch (KeeperException e) {
                 e.printStackTrace();
