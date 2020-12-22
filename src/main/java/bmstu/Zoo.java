@@ -9,18 +9,11 @@ import java.util.List;
 
 public class Zoo {
     ActorRef storeActor;
-    static ZooKeeper zoo;
-    static {
-        try {
-            zoo = new ZooKeeper("localhost", 3000, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    ZooKeeper zoo;
 
-    public Zoo(ActorRef storeActor) {
+    public Zoo(ActorRef storeActor) throws IOException {
         this.storeActor = storeActor;
-        
+        ZooKeeper zoo = new ZooKeeper("localhost", 3000, null);
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
