@@ -2,6 +2,7 @@ package bmstu;
 
 import org.apache.zookeeper.*;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Zoo {
@@ -15,4 +16,6 @@ public class Zoo {
         System.out.println("server " + s + " data=" + new String(data));
     }
 
+    public Zoo() throws IOException {
+    }
 }
