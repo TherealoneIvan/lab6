@@ -2,6 +2,7 @@ package bmstu;
 
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.proto.WatcherEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Zoo {
         this.storeActor = storeActor;
         this.zoo = new ZooKeeper("localhost", 3000, null);
         serverInit();
-        
+        WatcherEvent
     }
 
     private static void serverInit() throws KeeperException, InterruptedException {
