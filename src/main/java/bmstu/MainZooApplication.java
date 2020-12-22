@@ -49,6 +49,9 @@ public class MainZooApplication  extends AllDirectives {
     private static CompletionStage<HttpResponse> singleReq (String url){
         return http.singleRequest(HttpRequest.create(url));
     }
+    private static CompletionStage<HttpResponse> fetch (String url){
+        
+    }
     private Route createRoute(){
         return get(()->
                 parameter("url", url->
@@ -58,7 +61,7 @@ public class MainZooApplication  extends AllDirectives {
                                 return completeWithFuture(singleReq(url));
                             else
                                 return completeWithFuture(Patterns.ask(storeActor ,new GetServerMsg("Req"),TIMEOUT_MILLIS)
-                                                .thenApply(sUrl -> fetch())
+                                                .thenApply(sUrl -> fetch(String.format()))
                                 )
                         })
 
