@@ -12,11 +12,12 @@ public class Zoo {
     public static final String SERVERS_ROOT_STRING = "/servers/";
     public static final String SERVERS = "/servers";
     public static final String SERVERS_NODE_STRING = "/servers/s";
+    public static final String LOCALHOST = "localhost";
     private ActorRef storeActor;
     private static ZooKeeper zoo;
     public Zoo(ActorRef storeActor , String port) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
-        this.zoo = new ZooKeeper("localhost", 3000, null);
+        this.zoo = new ZooKeeper(LOCALHOST, 3000, null);
         serverInit(port);
         WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
                 Watcher.Event.KeeperState.SyncConnected, "");
