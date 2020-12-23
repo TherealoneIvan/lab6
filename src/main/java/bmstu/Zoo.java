@@ -13,11 +13,12 @@ public class Zoo {
     public static final String SERVERS = "/servers";
     public static final String SERVERS_NODE_STRING = "/servers/s";
     public static final String LOCALHOST = "localhost";
+    public static final int SESSION_TIMEOUT = 3000;
     private ActorRef storeActor;
     private static ZooKeeper zoo;
     public Zoo(ActorRef storeActor , String port) throws IOException, KeeperException, InterruptedException {
         this.storeActor = storeActor;
-        this.zoo = new ZooKeeper(LOCALHOST, 3000, null);
+        this.zoo = new ZooKeeper(LOCALHOST, SESSION_TIMEOUT, null);
         serverInit(port);
         WatchedEvent e = new WatchedEvent(Watcher.Event.EventType.NodeCreated,
                 Watcher.Event.KeeperState.SyncConnected, "");
@@ -37,7 +38,7 @@ public class Zoo {
             ArrayList<String> servers = new ArrayList<>();
             try {
                 List<String> serversList = zoo.getChildren(SERVERS, null);
-                for (String s : servers) {
+                for (String s : serversList) {
                     byte[] data = zoo.getData(SERVERS_ROOT_STRING + s, false, null);
                     servers.add(new String(data));
                 }
